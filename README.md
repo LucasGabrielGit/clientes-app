@@ -12,7 +12,7 @@ Execute `ng generate component component-name` para gerar um novo componente. Vo
 
 ## Construir
 
-Execute `ng build` para construir o projeto. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Execute `ng build` para construir o projeto. Os artefatos de construção serão armazenados no diretório `dist /`. Use o sinalizador `--prod` para uma construção de produção.
 
 ## Executando unidades de teste
 
