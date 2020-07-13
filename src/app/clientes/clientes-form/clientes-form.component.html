@@ -1,0 +1,110 @@
+<h1 class="mt-4">Cadastro de Clientes</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">{{cliente.id ? 'Edição' : 'Cadastro'}}</li>
+</ol>
+
+<div class="container">
+    <!--(ngSubmit) É um EventBind para escutar a submissão do formulário-->
+    <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="container">
+            <div class="row">
+                <div class="col-m-d-12">
+                    <div class="alert alert-success" role="alert" *ngIf="success == true">
+                        <code class="font-weight-bold text-dark">Cliente salvo com sucesso</code>
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+                        <code class="font-weight-bold text-dark">{{erro}}</code>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="cliente.id">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>ID:</label>
+                    <input type="text" class="form-control" [ngModel]="cliente.id" name="id" disabled />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Data cadastro:</label>
+                    <input type="text" class="form-control" [ngModel]="cliente.dataCadastro" name="dataCadastro"
+                        disabled />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="txtNome">Nome:*</label>
+                    <input type="text" class="form-control" id="txtNome" [(ngModel)]="cliente.nome" name="nome"
+                        autocomplete="off" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="txtCPF">CPF:*</label>
+                    <input type="text" class="form-control" id="txtCPF" [(ngModel)]="cliente.cpf" name="cpf"
+                        autocomplete="off" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="txtEmail">E-mail:</label>
+                    <input type="email" class="form-control" id="txtEmail" [(ngModel)]="cliente.email" name="email"
+                        autocomplete="off" />
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div class="form-group">
+                    <label for="txtUf">UF:</label>
+                    <input type="text" class="form-control" id="txtUf" [(ngModel)]="cliente.estado_uf" name="estado_uf"
+                        autocomplete="off" />
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="txtCidade">Cidade:</label>
+                    <input type="text" class="form-control" id="txtCidade" [(ngModel)]="cliente.cidade" name="cidade"
+                        autocomplete="off" />
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label for="txtCep">CEP:</label>
+                    <input type="text" class="form-control" id="txtCep" [(ngModel)]="cliente.cep" name="cep"
+                        autocomplete="off" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="txtCep">Endereço:</label>
+                    <input type="text" class="form-control" id="txtCep" [(ngModel)]="cliente.endereco" name="endereco"
+                        autocomplete="off" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <button class="btn btn-success mr-1" type="submit" name="nome" *ngIf="!cliente.id">
+                    <i class="fas fa-save"></i> Salvar
+                </button>
+                <button class="btn btn-info mr-1" type="submit" name="nome" *ngIf="cliente.id">
+                    <i class="fas fa-sync-alt    "></i> Atualizar
+                </button>
+                <button class="btn btn-warning" type="submit" name="nome" (click)="voltar()">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
