@@ -9,6 +9,17 @@
   <form #form="ngForm" action="submit" (submit)="onSubmit()">
 
     <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-success" role="alert" *ngIf="success == true">
+          <code class="font-weight-bold text-dark">Serviço salvo com sucesso</code>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor="let erro of errors">
+          <code class="font-weight-bold text-dark">{{erro}}</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
       <div class="col-md-4">
         <div class="form-group">
           <label for="cbxCliente">Cliente:</label>

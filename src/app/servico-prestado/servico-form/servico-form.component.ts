@@ -14,6 +14,8 @@ export class ServicoFormComponent implements OnInit {
 
   clientes: Cliente[] = []
   servico: Servico
+  success: boolean
+  errors: String[]
 
 
   constructor(
@@ -45,11 +47,14 @@ export class ServicoFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.salvar(this.servico).subscribe(
-      response => {
-        console.log(this.servico)
-
-      })
+    this.service
+      .salvar(this.servico)
+      .subscribe(
+        response => {
+          this.success = true
+          this.errors = null
+          this.servico = new Servico()
+        })
   }
 
 }
