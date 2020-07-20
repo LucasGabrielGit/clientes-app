@@ -54,6 +54,9 @@ export class ServicoFormComponent implements OnInit {
           this.success = true
           this.errors = null
           this.servico = new Servico()
+        }, errorResponse => {
+          this.success = false
+          this.errors = errorResponse.error.errors
         })
   }
 
