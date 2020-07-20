@@ -1,8 +1,10 @@
+import { Router } from '@angular/router';
 import { Servico } from './../servico';
 import { ClientesService } from './../../clientes.service';
 import { Cliente } from './../../clientes/clientes';
 import { Component, OnInit } from '@angular/core';
 
+import { ServicoPrestadoService } from '../../servico-prestado.service'
 @Component({
   selector: 'app-servico-form',
   templateUrl: './servico-form.component.html',
@@ -10,10 +12,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServicoFormComponent implements OnInit {
 
-  clientes: Cliente[]
+  clientes: Cliente[] = []
   servico: Servico
 
-  constructor(private clientesService: ClientesService) {
+
+  constructor(
+    private clientesService: ClientesService,
+    private service: ServicoPrestadoService,
+    private router: Router
+  ) {
     this.servico = new Servico()
   }
 
@@ -25,8 +32,24 @@ export class ServicoFormComponent implements OnInit {
       })
   }
 
+  existemClientes(): boolean {
+    if (this.clientes.length != 0) {
+      return true;
+    } else {
+      return false
+    }
+  }
+
+  goToNewCliente() {
+    this.router.navigate(["/clientes-cad"])
+  }
+
   onSubmit() {
-    console.log(this.servico)
+    this.service.salvar(this.servico).subscribe(
+      response => {
+        console.log(this.servico)
+
+      })
   }
 
 }
