@@ -1,5 +1,6 @@
 {
     "cSpell.words": [
+        "Logado",
         "Servico",
         "browserslist",
         "codelyzer",
@@ -8,6 +9,7 @@
         "jasminewd",
         "preco",
         "servicos",
-        "sidenav"
+        "sidenav",
+        "topnav"
     ]
 }
