@@ -1,3 +1,4 @@
+import { ServicoListComponent } from './../servico-list/servico-list.component';
 import { Router } from '@angular/router';
 import { Servico } from './../servico';
 import { ClientesService } from './../../clientes.service';
@@ -16,6 +17,7 @@ export class ServicoFormComponent implements OnInit {
   servico: Servico
   success: boolean
   errors: String[]
+  servicoLista: ServicoListComponent
 
 
   constructor(
@@ -46,6 +48,10 @@ export class ServicoFormComponent implements OnInit {
     this.router.navigate(["/clientes-cad"])
   }
 
+  goToServicoList() {
+    this.router.navigate(["/servico-list"])
+  }
+
   onSubmit() {
     this.service
       .salvar(this.servico)
@@ -54,6 +60,8 @@ export class ServicoFormComponent implements OnInit {
           this.success = true
           this.errors = null
           this.servico = new Servico()
+          this.goToServicoList()
+          this.servicoLista.ngOnInit()
         }, errorResponse => {
           this.success = false
           this.errors = errorResponse.error.errors

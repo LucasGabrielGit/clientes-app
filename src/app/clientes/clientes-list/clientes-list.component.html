@@ -3,6 +3,7 @@
   <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Consulta</li>
   </ol>
+
   <div class="row">
     <div class="col-m-d-12">
       <div class="alert alert-success" role="alert" *ngIf="msgSucesso">
@@ -13,23 +14,26 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md">
-      <button class="btn btn-primary" (click)="novoCadastro()">
-        Cadastrar <i class="fas fa-plus"></i>
-      </button>
-      <div class="form-row">
-        <div class="input-group mt-4 col-md-6">
-          <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Pesquisar">
-          <div class="input-group-append">
-            <button class="btn btn-outline-primary" type="button">
-              <i class="fa fa-search" aria-hidden="true"></i>
-            </button>
+  <form #formSearch="ngForm" (submit)="consultar()">
+    <div class="row">
+      <div class="col-md">
+        <button class="btn btn-primary" (click)="novoCadastro()">
+          Cadastrar <i class="fas fa-plus"></i>
+        </button>
+        <div class="form-row">
+          <div class="input-group mt-4 col-md-6">
+            <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Pesquisar" [(ngModel)]="nome"
+              name="nome">
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i> Buscar
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <div class="row mt-4">
     <div class="col-md-12">
@@ -94,5 +98,4 @@
       </div>
     </div>
   </div>
-
 </div>

@@ -1,1 +1,68 @@
-<p>servico-list works!</p>
+<div class="container">
+  <h1 class="mt-4">Serviço prestado</h1>
+  <ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Consulta</li>
+  </ol>
+
+
+  <form #formSearch="ngForm" (submit)="consultar()">
+
+    <button class="btn btn-primary" (click)="novoServico()">
+      Cadastrar <i class="fas fa-plus"></i>
+    </button>
+
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <label for="txtNome">Cliente:</label>
+        <input type="text" name="nome" id="txtNome" [(ngModel)]="nome" class="form-control" autocomplete="off">
+      </div>
+      <div class="col-md-1">
+        <label for="cbxMes">Mês:</label>
+        <select name="mes" id="cbxMes" class="form-control" [(ngModel)]="mes">
+          <option value="">Selecione...</option>
+          <option *ngFor="let mes of meses">
+            {{mes}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <button class="btn btn-outline-primary mt-4" type="submit">
+          <i class="fas fa-search"></i> Buscar
+        </button>
+      </div>
+    </div>
+
+  </form>
+  <br>
+
+
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover" *ngIf="this.lista.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Cliente</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let s of lista">
+            <td>{{s.cliente.nome}}</td>
+            <td>{{s.descricao}}</td>
+            <td>{{s.valor}}</td>
+            <td>{{s.data}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="this.lista.length == 0" class="alert alert-warning text-center font-weight-bold" role="alert">
+        Nenhum serviço cadastrado!
+      </div>
+    </div>
+  </div>
+
+</div>
